@@ -26,11 +26,11 @@ const ProfileInfo = ({ setShow, show }) => {
   };
 
   return (
-    <div className="bg-slate-200 w-full h-screen text-center px-3 pt-10 pb-20 overflow-y-scroll no-scrollbar">
+    <div className="bg-slate-200 w-full h-screen text-center px-3 pt-12 pb-36 overflow-y-scroll no-scrollbar">
       {profileInfo ? (
         <div>
           <div className="flex justify-center">
-            <div className="w-40">
+            <div className="w-40 ">
               <img src={profileImg} className="w-full" alt="profilePhoto" />
             </div>
           </div>
@@ -40,13 +40,32 @@ const ProfileInfo = ({ setShow, show }) => {
             <p>{profileInfo.address}</p>
           </div>
           <nav>
-            <ul className="text-sm cursor-pointer">
+            {/* <ul className="text-sm cursor-pointer">
               {profileInfo?.navLinks?.map((nav) => (
                 <li className="py-2 nav-act" key={nav.id}>
                   <Link
                     to={nav.id}
                     smooth={true}
-                    offset={nav.id === "home" ? 0 : 0}
+                    offset={nav.id === "home" ? 0 : 100}
+                    spy={true}
+                    exact="true"
+                    duration={200}
+                    containerId="containerElement"
+                    className="link"
+                    onClick={handleClick}
+                  >
+                    {nav.title}
+                  </Link>
+                </li>
+              ))}
+            </ul> */}
+            <ul className="text-sm cursor-pointer">
+              {profileInfo?.navLinks?.map((nav) => (
+                <li className="py-2 nav-act aboutDiv" key={nav.id}>
+                  <Link
+                    to={nav.id}
+                    smooth={true}
+                    offset={-60}
                     spy={true}
                     exact="true"
                     duration={200}

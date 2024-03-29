@@ -19,6 +19,18 @@
     scroll-behavior: smooth;
   }
 
+  .shimmerContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .shimmerCard {
+    margin: 1rem;
+    padding: 0.5rem;
+    width: 15rem;
+    height: 20rem;
+    background-color: #f0f0f0;
+  }
+
 .homeBg1 {
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0, rgba(0, 0, 0, 0.2) 100%, rgba(0, 0, 0, 0.7) 100%)
 }
@@ -147,6 +159,28 @@
     background: rgb(59 130 246);
     transition: width .3s;
 }
+
+  @keyframes blink {
+    0%,
+    22%,
+    36%,
+    75% {
+      color: #2e9fcc;
+    }
+    28%,
+    33% {
+      color: #166c8e;
+    }
+    82%,
+    97% {
+      color: #184991;
+    }
+  }
+
+.titleTag {
+    animation: shine 3s forwards, blink 3s 3s infinite;
+}
+
 .link::after {
     content: '';
     display: block;
@@ -167,4 +201,20 @@
     opacity: 1;
     transition: all 1s ease;
     z-index: 1;
+}
+
+.content {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 2s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+section {
+    min-height: 100vh;
 }

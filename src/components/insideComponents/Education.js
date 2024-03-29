@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaUserGraduate } from "react-icons/fa6";
 import { TbSquareRoundedArrowDownFilled } from "react-icons/tb";
 import { TbSquareRoundedArrowUpFilled } from "react-icons/tb";
@@ -6,6 +6,23 @@ import { TbSquareRoundedArrowUpFilled } from "react-icons/tb";
 const Education = ({ educationData }) => {
   const [showIndex, setIndex] = useState(-1);
   const [visible, setVisible] = useState(false);
+  const [hiddenElements, setHiddenElements] = useState(null);
+  const [aniHead, setAniHead] = useState(false);
+  const [aniCards, setAniCards] = useState(false);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        if (entry.target.id === "head2") setAniHead(true);
+        if (entry.target.id === "cards2") setAniCards(true);
+      }
+    });
+  });
+
+  useEffect(() => {
+    setHiddenElements(document.querySelectorAll(".animation"));
+  }, []);
+  hiddenElements?.forEach((el) => observer.observe(el));
 
   const handleClick = (index) => {
     if (index === showIndex) {
@@ -17,16 +34,41 @@ const Education = ({ educationData }) => {
     }
   };
   return (
-    <div className="md:px-10 px-5 md:pt-36 pt-20 bg-white" id="education">
-      <h1 className="text-gray-400 font-mono [letter-spacing:0.3em]">
-        EDUCATION
-      </h1>
-      <h1 className="font-bold text-xl font-serif [letter-spacing:0.3em] py-5">
-        EDUCATION
-      </h1>
-      <div className="md:py-10 py-5">
+    <div className="md:px-10 px-5 pb-36 bg-white" id="education">
+      <div className="animation" id="head2">
+        <h1
+          className={`text-gray-400 font-mono [letter-spacing:0.3em] ${
+            aniHead
+              ? "animate-slideright opacity-0 [--slideright-delay:300ms]"
+              : ""
+          }`}
+        >
+          EDUCATION
+        </h1>
+        <div
+          className={`${
+            aniHead ? "animate-slideup opacity-0 [--slideup-delay:300ms]" : ""
+          }`}
+        >
+          <h1 className="font-bold text-xl font-serif [letter-spacing:0.3em] py-5 titleTag">
+            EDUCATION
+          </h1>
+        </div>
+      </div>
+      <div className="md:py-10 py-5 animation" id="cards2">
         {educationData?.map((edu, index) => (
-          <div className="pt-1" key={index}>
+          <div
+            className={`pt-1 ${
+              aniCards && (index + 1) % 2 === 0
+                ? "animate-slideleft opacity-0 [--slideleft-delay:1000ms]"
+                : ""
+            } ${
+              aniCards && (index + 1) % 2 !== 0
+                ? "animate-slideright opacity-0 [--slideright-delay:1000ms]"
+                : ""
+            }`}
+            key={index}
+          >
             <button
               className="w-full  bg-slate-200 flex justify-between border-[1px] border-gray-300"
               onClick={() => handleClick(index)}

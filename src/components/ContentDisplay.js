@@ -11,7 +11,7 @@ const ContentDisplay = ({ mainData }) => {
   }, [show]);
 
   return (
-    <div className="relative" id="home">
+    <div className="relative md:pb-36 pb-20 bg-white" id="home">
       <div className="h-screen xl:pr-14 -z-10 fixed">
         <img
           src={mainData.bgImg}
@@ -26,15 +26,15 @@ const ContentDisplay = ({ mainData }) => {
           }`}
         >
           <div className="absolute h-full w-full ">
-            <div className="pl-14 md:mt-[12%] mt-[20%] w-[30rem] ">
-              <p className="text-5xl font-bold font-serif">
+            <div className="pl-14 md:mt-[12%] mt-[20%] w-[30rem] animate-slideup opacity-0 [--slideup-delay:300ms] ">
+              <p className="text-5xl font-bold font-serif titleTag">
                 {mainData.greet1Line1}
               </p>
-              <p className="text-5xl py-10 font-bold font-serif">
+              <p className="text-5xl py-10 font-bold font-serif titleTag">
                 {mainData.greet1Line2}
               </p>
             </div>
-            <div className="absolute bottom-14 px-10">
+            <div className="absolute bottom-14 px-10 animate-slideup opacity-0 [--slideup-delay:300ms]">
               <p className="text-xl text-slate-500">{mainData.des1}</p>
             </div>
           </div>
@@ -46,15 +46,15 @@ const ContentDisplay = ({ mainData }) => {
         </div>
         <div className={`h-screen w-full relative ${show ? "hidden" : ""}`}>
           <div className="absolute h-full w-full ">
-            <div className="pl-14 md:mt-[12%] mt-[20%] w-[30rem] backdrop-blur-sm  text-slate-500">
-              <p className="text-5xl  font-bold font-serif">
+            <div className="pl-14 md:mt-[12%] mt-[20%] w-[30rem] backdrop-blur-sm  text-slate-500 animate-slideup opacity-0 [--slideup-delay:300ms]">
+              <p className="text-5xl  font-bold font-serif titleTag">
                 {mainData.greet2Line1}
               </p>
-              <p className="text-5xl py-10 font-bold font-serif">
+              <p className="text-5xl py-10 font-bold font-serif titleTag">
                 {mainData.greet2Line2}
               </p>
             </div>
-            <div className="absolute bottom-14 pl-10 backdrop-blur-sm w-[20rem]">
+            <div className="absolute bottom-14 pl-10 backdrop-blur-sm w-[20rem] animate-slideup opacity-0 [--slideup-delay:300ms]">
               <p className="text-xl text-slate-500 font-semibold">
                 {mainData.des2}
               </p>

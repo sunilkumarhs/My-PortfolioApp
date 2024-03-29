@@ -1,22 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdOutlineWorkspacePremium } from "react-icons/md";
 import { BiSolidLeftArrow } from "react-icons/bi";
 import { ImOffice } from "react-icons/im";
 
 const Experience = ({ experienceData }) => {
+  const [hiddenElements, setHiddenElements] = useState(null);
+  const [aniHead, setAniHead] = useState(false);
+  const [aniCards, setAniCards] = useState(false);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        if (entry.target.id === "head3") setAniHead(true);
+        if (entry.target.id === "cards3") setAniCards(true);
+      }
+    });
+  });
+
+  useEffect(() => {
+    setHiddenElements(document.querySelectorAll(".animation"));
+  }, []);
+  hiddenElements?.forEach((el) => observer.observe(el));
+
   return (
-    <div className="md:px-10 px-5 md:pt-36 pt-20 bg-white" id="experience">
-      <h1 className="text-gray-400 font-mono [letter-spacing:0.3em]">
-        EXPERIENCE
-      </h1>
-      <h1 className="font-bold text-xl font-serif [letter-spacing:0.3em] py-5">
-        WORK EXPERIENCE
-      </h1>
-      <div className="py-10">
+    <div className="md:px-10 px-5 pb-36 bg-white" id="experience">
+      <div className="animation" id="head3">
+        <h1
+          className={`text-gray-400 font-mono [letter-spacing:0.3em] ${
+            aniHead
+              ? "animate-slideright opacity-0 [--slideright-delay:300ms]"
+              : ""
+          }`}
+        >
+          EXPERIENCE
+        </h1>
+        <div
+          className={`${
+            aniHead ? "animate-slideup opacity-0 [--slideup-delay:300ms]" : ""
+          }`}
+        >
+          <h1 className="font-bold text-xl font-serif [letter-spacing:0.3em] py-5 titleTag">
+            WORK EXPERIENCE
+          </h1>
+        </div>
+      </div>
+      <div className="py-10 animation" id="cards3">
         {experienceData?.map((exp, index) => (
           <div className="flex" key={index}>
-            <MdOutlineWorkspacePremium className="text-5xl text-white bg-red-500 rounded-full lg:p-2 p-1 border-4 border-slate-200" />
-            <div className="flex w-full">
+            <MdOutlineWorkspacePremium
+              className={`text-5xl text-white bg-red-500 rounded-full lg:p-2 p-1 border-4 border-slate-200 ${
+                aniCards
+                  ? "animate-slideright opacity-0 [--slideright-delay:1000ms]"
+                  : ""
+              }`}
+            />
+            <div
+              className={`flex w-full ${
+                aniCards
+                  ? "animate-slideleft opacity-0 [--slideleft-delay:1000ms]"
+                  : ""
+              }`}
+            >
               <BiSolidLeftArrow className="text-xl my-3 p-0 mx-0 text-slate-200" />
               <div className="w-full -ml-1 md:px-5 px-2  py-3 md:py-5 bg-slate-200">
                 <div className="lg:flex ">

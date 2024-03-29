@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsGit } from "react-icons/bs";
 import { LuView } from "react-icons/lu";
 import { PiFlowArrowFill } from "react-icons/pi";
@@ -6,6 +6,27 @@ import { PiFlowArrowFill } from "react-icons/pi";
 const Projects = ({ projectsData }) => {
   const [showIndex, setIndex] = useState(0);
   const [showContent, setContent] = useState(-1);
+  const [hiddenElements, setHiddenElements] = useState(null);
+  const [aniHead, setAniHead] = useState(false);
+  const [aniCards, setAniCards] = useState(null);
+  const [anicontent, setAniContent] = useState(false);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        if (entry.target.id === "head4") setAniHead(true);
+        if (entry.target.id === "cards4") setAniCards("cards4");
+        if (entry.target.id === "cards4.2") setAniCards("cards4.2");
+        if (entry.target.id === "cards4.3") setAniCards("cards4.3");
+        if (entry.target.id === "content4") setAniContent(true);
+      }
+    });
+  });
+
+  useEffect(() => {
+    setHiddenElements(document.querySelectorAll(".animation"));
+  }, []);
+  hiddenElements?.forEach((el) => observer.observe(el));
 
   const handleClick = (index) => {
     setIndex(index);
@@ -20,17 +41,42 @@ const Projects = ({ projectsData }) => {
   };
 
   return (
-    <div className="md:px-10 px-5 md:pt-36 pt-20 bg-white" id="work">
-      <h1 className="text-gray-400 font-mono [letter-spacing:0.3em]">
-        MY PROJECTS
-      </h1>
-      <h1 className="font-bold text-xl font-serif [letter-spacing:0.3em] py-5">
-        RECENT PROJECTS
-      </h1>
+    <div className="md:px-10 px-5 pb-36 bg-white" id="work">
+      <div className="animation" id="head4">
+        <h1
+          className={`text-gray-400 font-mono [letter-spacing:0.3em] ${
+            aniHead
+              ? "animate-slideright opacity-0 [--slideright-delay:300ms]"
+              : ""
+          }`}
+        >
+          MY PROJECTS
+        </h1>
+        <div
+          className={`${
+            aniHead ? "animate-slideup opacity-0 [--slideup-delay:300ms]" : ""
+          }`}
+        >
+          <h1 className="font-bold text-xl font-serif [letter-spacing:0.3em] py-5 titleTag">
+            RECENT PROJECTS
+          </h1>
+        </div>
+      </div>
       <div className="py-10">
-        <div className="flex">
+        <div className="flex animation" id="content4">
           {projectsData?.sections?.map((sec, index) => (
-            <div className="relative" key={index}>
+            <div
+              className={`relative ${
+                anicontent && (index + 1) % 2 === 0
+                  ? "animate-slideup opacity-0 [--slideup-delay:1000ms]"
+                  : ""
+              } ${
+                anicontent && (index + 1) % 2 !== 0
+                  ? "animate-slidedown opacity-0 [--slidedown-delay:1000ms]"
+                  : ""
+              }`}
+              key={index}
+            >
               <p
                 className={`mr-5 font-semibold cursor-pointer link ${
                   showIndex === index ? "text-blue-500" : "text-slate-600"
@@ -53,11 +99,22 @@ const Projects = ({ projectsData }) => {
           <div
             className={`w-full py-2 ${
               showIndex === 0 ? "flex" : "hidden"
-            } justify-between flex-wrap`}
+            } justify-between flex-wrap animation`}
+            id="cards4"
           >
             {projectsData?.react?.map((pro, index) => (
               <div
-                className={`xl:w-[48%] w-full xl:h-[25rem] min-h-[25rem] h-full cursor-pointer my-4 ${pro.bgColor}`}
+                className={`xl:w-[48%] w-full xl:h-[25rem] min-h-[25rem] h-full cursor-pointer my-4 ${
+                  pro.bgColor
+                } ${
+                  aniCards === "cards4" && (index + 1) % 2 === 0
+                    ? "animate-slideleft opacity-0 [--slideleft-delay:1000ms]"
+                    : ""
+                } ${
+                  aniCards === "cards4" && (index + 1) % 2 !== 0
+                    ? "animate-slideright opacity-0 [--slideright-delay:1000ms]"
+                    : ""
+                }`}
                 key={index}
                 onMouseOver={() => handleOver(index)}
                 onMouseLeave={() => handleLeave()}
@@ -65,7 +122,7 @@ const Projects = ({ projectsData }) => {
                 <img
                   src={pro.imageurl}
                   alt="netfliximg"
-                  className={`w-full min-h-[25rem] h-full ${
+                  className={`w-full h-[25rem]  ${
                     showContent === index ? "hidden" : ""
                   }`}
                 />
@@ -109,11 +166,22 @@ const Projects = ({ projectsData }) => {
           <div
             className={`w-full py-2 ${
               showIndex === 1 ? "flex" : "hidden"
-            } justify-between flex-wrap`}
+            } justify-between flex-wrap animation`}
+            id="cards4.2"
           >
             {projectsData?.js?.map((pro, index) => (
               <div
-                className={`xl:w-[48%] w-full xl:h-[25rem] min-h-[25rem] h-full cursor-pointer my-4 ${pro.bgColor}`}
+                className={`xl:w-[48%] w-full xl:h-[25rem] min-h-[25rem] h-full cursor-pointer my-4 ${
+                  pro.bgColor
+                } ${
+                  aniCards === "cards4.2" && (index + 1) % 2 === 0
+                    ? "animate-slideleft opacity-0 [--slideleft-delay:1000ms]"
+                    : ""
+                } ${
+                  aniCards === "cards4.2" && (index + 1) % 2 !== 0
+                    ? "animate-slideright opacity-0 [--slideright-delay:1000ms]"
+                    : ""
+                }`}
                 key={index}
                 onMouseOver={() => handleOver(index)}
                 onMouseLeave={() => handleLeave()}
@@ -121,7 +189,7 @@ const Projects = ({ projectsData }) => {
                 <img
                   src={pro.imageurl}
                   alt="netfliximg"
-                  className={`w-full min-h-[25rem] h-full ${
+                  className={`w-full h-[25rem] ${
                     showContent === index ? "hidden" : ""
                   }`}
                 />
@@ -165,11 +233,22 @@ const Projects = ({ projectsData }) => {
           <div
             className={`w-full py-2 ${
               showIndex === 2 ? "flex" : "hidden"
-            } justify-between flex-wrap`}
+            } justify-between flex-wrap animation`}
+            id="cards4.3"
           >
             {projectsData?.web?.map((pro, index) => (
               <div
-                className={`xl:w-[48%] w-full xl:h-[25rem] min-h-[25rem] h-full cursor-pointer my-4 ${pro.bgColor}`}
+                className={`xl:w-[48%] w-full xl:h-[25rem] min-h-[25rem] h-full cursor-pointer my-4 ${
+                  pro.bgColor
+                } ${
+                  aniCards === "cards4.3" && (index + 1) % 2 === 0
+                    ? "animate-slideleft opacity-0 [--slideleft-delay:1000ms]"
+                    : ""
+                } ${
+                  aniCards === "cards4.3" && (index + 1) % 2 !== 0
+                    ? "animate-slideright opacity-0 [--slideright-delay:1000ms]"
+                    : ""
+                }`}
                 key={index}
                 onMouseOver={() => handleOver(index)}
                 onMouseLeave={() => handleLeave()}
@@ -177,7 +256,7 @@ const Projects = ({ projectsData }) => {
                 <img
                   src={pro.imageurl}
                   alt="netfliximg"
-                  className={`w-full min-h-[25rem] h-full ${
+                  className={`w-full h-[25rem] ${
                     showContent === index ? "hidden" : ""
                   }`}
                 />
