@@ -62,7 +62,11 @@ const Contact = ({ contactData }) => {
                   : ""
               }`}
             >
-              <BiMailSend className="text-8xl p-6 bg-slate-200 text-blue-500" />
+              <BiMailSend
+                className={`text-8xl p-6 text-blue-500 ${
+                  darkTheme ? "bg-slate-950" : "bg-slate-200"
+                }`}
+              />
               <p className="md:px-5 px-3 sm:text-lg text-sm text-blue-400 pt-5">
                 {contactData?.mail}
               </p>
@@ -74,7 +78,11 @@ const Contact = ({ contactData }) => {
                   : ""
               }`}
             >
-              <GrMapLocation className="text-8xl p-6 bg-slate-200 text-blue-500" />
+              <GrMapLocation
+                className={`text-8xl p-6 text-blue-500 ${
+                  darkTheme ? "bg-slate-950" : "bg-slate-200"
+                }`}
+              />
               <p className="md:px-5 px-3 pt-5">{contactData?.address}</p>
             </div>
             <div
@@ -84,7 +92,11 @@ const Contact = ({ contactData }) => {
                   : ""
               }`}
             >
-              <HiMiniDevicePhoneMobile className="text-8xl p-6 bg-slate-200 text-blue-500" />
+              <HiMiniDevicePhoneMobile
+                className={`text-8xl p-6 text-blue-500 ${
+                  darkTheme ? "bg-slate-950" : "bg-slate-200"
+                }`}
+              />
               <p className="md:px-5 px-3 text-blue-400 pt-8">
                 {contactData?.num}
               </p>
@@ -104,7 +116,9 @@ const Contact = ({ contactData }) => {
               <input
                 type="text"
                 placeholder="Name"
-                className="w-full bg-slate-200 py-4 px-4"
+                className={`w-full py-4 px-4 ${
+                  darkTheme ? "bg-slate-950" : "bg-slate-200 text-black"
+                }`}
               />
             </div>
             <div
@@ -117,7 +131,9 @@ const Contact = ({ contactData }) => {
               <input
                 type="mail"
                 placeholder="E-Mail"
-                className="w-full bg-slate-200 py-4 px-4"
+                className={`w-full py-4 px-4 ${
+                  darkTheme ? "bg-slate-950" : "bg-slate-200 text-black"
+                }`}
               />
             </div>
             <div
@@ -130,7 +146,9 @@ const Contact = ({ contactData }) => {
               <input
                 type="text"
                 placeholder="Subject"
-                className="w-full bg-slate-200 py-4 px-4"
+                className={`w-full py-4 px-4 ${
+                  darkTheme ? "bg-slate-950" : "bg-slate-200 text-black"
+                }`}
               />
             </div>
             <div
@@ -142,7 +160,9 @@ const Contact = ({ contactData }) => {
             >
               <textarea
                 placeholder="Message"
-                className="w-full bg-slate-200 py-4 px-4"
+                className={`w-full py-4 px-4 ${
+                  darkTheme ? "bg-slate-950" : "bg-slate-200 text-black"
+                }`}
                 rows={5}
               />
             </div>
