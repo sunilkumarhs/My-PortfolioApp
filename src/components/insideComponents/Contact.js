@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BiMailSend } from "react-icons/bi";
 import { GrMapLocation } from "react-icons/gr";
 import { HiMiniDevicePhoneMobile } from "react-icons/hi2";
+import ThemesContext from "../../utils/ThemesContext";
 
 const Contact = ({ contactData }) => {
   const [hiddenElements, setHiddenElements] = useState(null);
   const [aniHead, setAniHead] = useState(false);
   const [aniCards, setAniCards] = useState(false);
   const [anicontent, setAniContent] = useState(false);
+  const { darkTheme } = useContext(ThemesContext);
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -24,7 +26,12 @@ const Contact = ({ contactData }) => {
   }, []);
   hiddenElements?.forEach((el) => observer.observe(el));
   return (
-    <div className="md:px-10 px-5 pb-36 bg-white" id="contact">
+    <div
+      className={`md:px-10 px-5 pb-36 ${
+        darkTheme ? "bg-slate-800 text-white" : "bg-white"
+      }`}
+      id="contact"
+    >
       <div className="animation" id="head5">
         <h1
           className={`text-gray-400 font-mono [letter-spacing:0.3em] ${

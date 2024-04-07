@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsGit } from "react-icons/bs";
 import { LuView } from "react-icons/lu";
 import { PiFlowArrowFill } from "react-icons/pi";
+import ThemesContext from "../../utils/ThemesContext";
 
 const Projects = ({ projectsData }) => {
   const [showIndex, setIndex] = useState(0);
@@ -10,6 +11,7 @@ const Projects = ({ projectsData }) => {
   const [aniHead, setAniHead] = useState(false);
   const [aniCards, setAniCards] = useState(null);
   const [anicontent, setAniContent] = useState(false);
+  const { darkTheme } = useContext(ThemesContext);
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -41,7 +43,12 @@ const Projects = ({ projectsData }) => {
   };
 
   return (
-    <div className="md:px-10 px-5 pb-36 bg-white" id="work">
+    <div
+      className={`md:px-10 px-5 pb-36  ${
+        darkTheme ? "bg-slate-800 text-white" : "bg-white"
+      }`}
+      id="work"
+    >
       <div className="animation" id="head4">
         <h1
           className={`text-gray-400 font-mono [letter-spacing:0.3em] ${

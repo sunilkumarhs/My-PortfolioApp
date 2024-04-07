@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { MdGraphicEq } from "react-icons/md";
-import { LiaFileCode } from "react-icons/lia";
-import { BsDatabaseFillGear } from "react-icons/bs";
-import { PiAppWindow } from "react-icons/pi";
+import React, { useContext, useEffect, useState } from "react";
+import { FaSquareGithub } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
+import { SiLinktree } from "react-icons/si";
+import { IoMail } from "react-icons/io5";
+import ThemesContext from "../../utils/ThemesContext";
 
 const About = ({ aboutData }) => {
   const [hiddenElements, setHiddenElements] = useState(null);
@@ -11,6 +12,7 @@ const About = ({ aboutData }) => {
   const [aniCards, setAniCards] = useState(false);
   const [aniCard, setAniCard] = useState(false);
   const [aniNumbers, setAniNumbers] = useState(false);
+  const { darkTheme } = useContext(ThemesContext);
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -54,7 +56,11 @@ const About = ({ aboutData }) => {
 
   return (
     <div id="about">
-      <div className="md:px-10 px-5 bg-white">
+      <div
+        className={`md:px-10 px-5 ${
+          darkTheme ? "bg-slate-800 text-white" : "bg-white"
+        }`}
+      >
         <div
           className={`animation ${
             aniHead
@@ -87,51 +93,75 @@ const About = ({ aboutData }) => {
             <p className="leading-7 md:py-5 py-3">{aboutData?.intro3}</p>
           </div>
           <div className="py-5"></div>
-          <div className="lg:flex justify-between animation" id="cards">
+          <div
+            className="flex flex-wrap lg:justify-between justify-around animation"
+            id="cards"
+          >
             <div
-              className={`lg:w-[22%] w-full px-5 boxshadow py-5 lg:mb-0 mb-5 border-b-4 border-blue-500  ${
+              className={`lg:w-1/5 w-2/5 px-2 boxshadow py-1 rounded-md lg:mb-0 mb-5 border-b-4 border-black cursor-pointer ${
                 aniCards
                   ? "animate-slideright opacity-0 [--slideright-delay:500ms]"
                   : ""
               }`}
             >
-              <MdGraphicEq className="text-4xl text-blue-500" />
-              <p className="font-semibold py-5">Graphic Designe</p>
+              <a href="https://github.com/sunilkumarhs">
+                <div className="flex justify-around">
+                  <FaSquareGithub className="text-4xl text-black" />
+                  <p className="font-bold pt-1">GitHub</p>
+                </div>
+              </a>
             </div>
             <div
-              className={`lg:w-[22%] w-full px-5 boxshadow py-5 lg:mb-0 mb-5 border-b-4 border-red-500 ${
-                aniCards
-                  ? "animate-slideleft opacity-0 [--slideleft-delay:500ms]"
-                  : ""
-              }`}
-            >
-              <LiaFileCode className="text-4xl text-red-500" />
-              <p className="font-semibold py-5">Web Designe</p>
-            </div>
-            <div
-              className={`lg:w-[22%] w-full px-5 boxshadow py-5 lg:mb-0 mb-5 border-b-4 border-yellow-500 ${
+              className={`lg:w-1/5 w-2/5 px-2 boxshadow py-1 rounded-md lg:mb-0 mb-5 border-b-4 border-blue-500 cursor-pointer ${
                 aniCards
                   ? "animate-slideup opacity-0 [--slideup-delay:500ms]"
                   : ""
               }`}
             >
-              <BsDatabaseFillGear className="text-4xl text-yellow-500" />
-              <p className="font-semibold py-5">Software</p>
+              <a href="https://www.linkedin.com/in/sunilkumarhs1718/">
+                <div className="flex justify-around">
+                  <FaLinkedin className="text-4xl text-blue-500" />
+                  <p className="font-bold pt-1">LinkedIn</p>
+                </div>
+              </a>
             </div>
             <div
-              className={`lg:w-[22%] w-full px-5 boxshadow py-5 lg:mb-0 mb-5 border-b-4 border-green-500  ${
+              className={`lg:w-1/5 w-2/5 px-2 boxshadow py-1 rounded-md lg:mb-0 mb-5 border-b-4 border-green-500 cursor-pointer ${
                 aniCards
                   ? "animate-slidedown opacity-0 [--slidedown-delay:500ms]"
                   : ""
               }`}
             >
-              <PiAppWindow className="text-4xl text-green-500" />
-              <p className="font-semibold py-5">Application</p>
+              <a href="https://linktr.ee/sunilkumarhs1718">
+                <div className="flex justify-around">
+                  <SiLinktree className="text-4xl text-green-500" />
+                  <p className="font-bold pt-1">Linktree</p>
+                </div>
+              </a>
+            </div>
+            <div
+              className={`lg:w-1/5 w-2/5 px-2 boxshadow py-1 rounded-md lg:mb-0 mb-5 border-b-4 border-red-500 cursor-pointer ${
+                aniCards
+                  ? "animate-slideleft opacity-0 [--slideleft-delay:500ms]"
+                  : ""
+              }`}
+            >
+              <a
+                href="mailto:sunilkumarhs974117@gmail.com"
+                rel="noopener noreferrer"
+              >
+                <div className="flex justify-around">
+                  <IoMail className="text-4xl text-red-500" />
+                  <p className="font-semibold pt-1">Mail</p>
+                </div>
+              </a>
             </div>
           </div>
           <div className="md:py-16 py-6">
             <div
-              className={`bg-amber-400 w-full px-10 py-5 animation ${
+              className={`${
+                darkTheme ? "bg-amber-900" : "bg-amber-400"
+              } w-full px-10 py-5 animation ${
                 aniCard
                   ? "animate-slideright opacity-0 [--slideright-delay:500ms]"
                   : ""
@@ -142,9 +172,11 @@ const About = ({ aboutData }) => {
                 {aboutData?.projectNum}
               </p>
               <div className="pt-8">
-                <button className="border-[1px] border-black px-2 tracking-widest">
-                  HIRE ME
-                </button>
+                <a href="https://drive.google.com/file/d/14nl0JSMqrFwOAud_iBY3nOVtrLutI-WW/view?usp=sharing">
+                  <button className="border-[1px] border-gray-400 px-2 tracking-widest">
+                    RESUME
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -172,7 +204,11 @@ const About = ({ aboutData }) => {
           </div>
         ))}
       </div>
-      <div className="pb-36 bg-white"></div>
+      <div
+        className={`pb-36 ${
+          darkTheme ? "bg-slate-800 text-white" : "bg-white"
+        }`}
+      ></div>
     </div>
   );
 };

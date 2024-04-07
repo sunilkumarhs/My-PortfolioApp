@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MdOutlineWorkspacePremium } from "react-icons/md";
 import { BiSolidLeftArrow } from "react-icons/bi";
 import { ImOffice } from "react-icons/im";
+import ThemesContext from "../../utils/ThemesContext";
 
 const Experience = ({ experienceData }) => {
   const [hiddenElements, setHiddenElements] = useState(null);
   const [aniHead, setAniHead] = useState(false);
   const [aniCards, setAniCards] = useState(false);
+  const { darkTheme } = useContext(ThemesContext);
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -23,7 +25,12 @@ const Experience = ({ experienceData }) => {
   hiddenElements?.forEach((el) => observer.observe(el));
 
   return (
-    <div className="md:px-10 px-5 pb-36 bg-white" id="experience">
+    <div
+      className={`md:px-10 px-5 pb-36 ${
+        darkTheme ? "bg-slate-800 text-white" : "bg-white"
+      }`}
+      id="experience"
+    >
       <div className="animation" id="head3">
         <h1
           className={`text-gray-400 font-mono [letter-spacing:0.3em] ${
@@ -48,10 +55,14 @@ const Experience = ({ experienceData }) => {
         {experienceData?.map((exp, index) => (
           <div className="flex" key={index}>
             <MdOutlineWorkspacePremium
-              className={`text-5xl text-white bg-red-500 rounded-full lg:p-2 p-1 border-4 border-slate-200 ${
+              className={`text-5xl bg-red-500 rounded-full lg:p-2 p-1  ${
                 aniCards
                   ? "animate-slideright opacity-0 [--slideright-delay:1000ms]"
                   : ""
+              } ${
+                darkTheme
+                  ? "border-4 border-slate-950 text-slate-900"
+                  : "border-4 border-slate-200 text-white"
               }`}
             />
             <div
@@ -61,8 +72,16 @@ const Experience = ({ experienceData }) => {
                   : ""
               }`}
             >
-              <BiSolidLeftArrow className="text-xl my-3 p-0 mx-0 text-slate-200" />
-              <div className="w-full -ml-1 md:px-5 px-2  py-3 md:py-5 bg-slate-200">
+              <BiSolidLeftArrow
+                className={`text-xl my-3 p-0 mx-0 ${
+                  darkTheme ? "text-slate-950" : "text-slate-200"
+                }`}
+              />
+              <div
+                className={`w-full -ml-1 md:px-5 px-2  py-3 md:py-5 ${
+                  darkTheme ? "bg-slate-950 text-white" : "bg-slate-200"
+                }`}
+              >
                 <div className="lg:flex ">
                   <p className="text-xl font-semibold">{exp.title}</p>
                   <p className="text-slate-400 px-2 py-1">{exp.year}</p>

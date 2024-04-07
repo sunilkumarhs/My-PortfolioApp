@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaUserGraduate } from "react-icons/fa6";
 import { TbSquareRoundedArrowDownFilled } from "react-icons/tb";
 import { TbSquareRoundedArrowUpFilled } from "react-icons/tb";
+import ThemesContext from "../../utils/ThemesContext";
 
 const Education = ({ educationData }) => {
   const [showIndex, setIndex] = useState(-1);
@@ -9,6 +10,7 @@ const Education = ({ educationData }) => {
   const [hiddenElements, setHiddenElements] = useState(null);
   const [aniHead, setAniHead] = useState(false);
   const [aniCards, setAniCards] = useState(false);
+  const { darkTheme } = useContext(ThemesContext);
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -34,7 +36,12 @@ const Education = ({ educationData }) => {
     }
   };
   return (
-    <div className="md:px-10 px-5 pb-36 bg-white" id="education">
+    <div
+      className={`md:px-10 px-5 pb-36 ${
+        darkTheme ? "bg-slate-800 text-white" : "bg-white"
+      }`}
+      id="education"
+    >
       <div className="animation" id="head2">
         <h1
           className={`text-gray-400 font-mono [letter-spacing:0.3em] ${
@@ -70,7 +77,9 @@ const Education = ({ educationData }) => {
             key={index}
           >
             <button
-              className="w-full  bg-slate-200 flex justify-between border-[1px] border-gray-300"
+              className={`w-full flex justify-between border-[1px] border-gray-300 ${
+                darkTheme ? "bg-slate-900 text-white" : "bg-slate-200"
+              }`}
               onClick={() => handleClick(index)}
             >
               <p className="px-5 py-4">{edu.title}</p>

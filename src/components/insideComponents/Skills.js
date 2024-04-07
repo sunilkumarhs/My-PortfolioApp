@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import ThemesContext from "../../utils/ThemesContext";
 
 const Skills = ({ skillData }) => {
   const [hiddenElements, setHiddenElements] = useState(null);
   const [aniHead, setAniHead] = useState(false);
   const [aniContent, setAniContent] = useState(false);
   const [aniCards, setAniCards] = useState(false);
+  const { darkTheme } = useContext(ThemesContext);
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -22,7 +24,12 @@ const Skills = ({ skillData }) => {
 
   hiddenElements?.forEach((el) => observer.observe(el));
   return (
-    <div className="md:px-10 px-5 pb-36 bg-white" id="skills">
+    <div
+      className={`md:px-10 px-5 pb-36 ${
+        darkTheme ? "bg-slate-800 text-white" : "bg-white"
+      }`}
+      id="skills"
+    >
       <div className="animation" id="head1">
         <h1
           className={`text-gray-400 font-mono [letter-spacing:0.3em] ${
