@@ -21,23 +21,31 @@ function Appjs() {
 
   const getMainData = async () => {
     const response = await api.get("/home");
+    setMainData(response.data);
     return response.data;
   };
 
-  const getMainContent = async () => {
-    const mainInfo = await getMainData();
-    if (mainInfo) setMainData(mainInfo);
-  };
+  // const getMainData = async () => {
+  //   const response = await fetch("https://json.abhishekshivale45.workers.dev");
+  //   const data = await response.json();
+  //   setMainData(data?.response?.home);
+  // };
+
+  // const getMainContent = async () => {
+  //   const mainInfo = await getMainData();
+  //   if (mainInfo) setMainData(mainInfo.home);
+  // };
 
   useEffect(() => {
-    getMainContent();
+    // getMainContent();
+    getMainData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClick = () => {
     setShow(!show);
   };
-
+  
   return (
     <ThemesContext.Provider value={{ darkTheme: theme, setTheme }}>
       <>

@@ -11,16 +11,23 @@ const ProfileInfo = ({ setShow, show }) => {
   const { darkTheme, setTheme } = useContext(ThemesContext);
   const getInfomation = async () => {
     const response = await api.get("/info");
-    return response.data;
+    setProfileInfo(response.data);
+    // return response.data;
   };
+  // const getInfomation = async () => {
+  //   const response = await fetch("https://json.abhishekshivale45.workers.dev");
+  //   const data = await response.json();
+  //   setProfileInfo(data?.response?.info);
+  // };
 
-  const getProfileInfo = async () => {
-    const proinfo = await getInfomation();
-    if (proinfo) setProfileInfo(proinfo);
-  };
+  // const getProfileInfo = async () => {
+  //   const proinfo = await getInfomation();
+  //   if (proinfo) setProfileInfo(proinfo.info);
+  // };
 
   useEffect(() => {
-    getProfileInfo();
+    // getProfileInfo();
+    getInfomation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // console.log(profileInfo);
