@@ -12,25 +12,12 @@ const ProfileInfo = ({ setShow, show }) => {
   const getInfomation = async () => {
     const response = await api.get("/info");
     setProfileInfo(response.data);
-    // return response.data;
   };
-  // const getInfomation = async () => {
-  //   const response = await fetch("https://json.abhishekshivale45.workers.dev");
-  //   const data = await response.json();
-  //   setProfileInfo(data?.response?.info);
-  // };
-
-  // const getProfileInfo = async () => {
-  //   const proinfo = await getInfomation();
-  //   if (proinfo) setProfileInfo(proinfo.info);
-  // };
 
   useEffect(() => {
-    // getProfileInfo();
     getInfomation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // console.log(profileInfo);
 
   const handleClick = () => {
     setShow(!show);
@@ -65,25 +52,6 @@ const ProfileInfo = ({ setShow, show }) => {
               <p>{profileInfo.address}</p>
             </div>
             <nav>
-              {/* <ul className="text-sm cursor-pointer">
-              {profileInfo?.navLinks?.map((nav) => (
-                <li className="py-2 nav-act" key={nav.id}>
-                  <Link
-                    to={nav.id}
-                    smooth={true}
-                    offset={nav.id === "home" ? 0 : 100}
-                    spy={true}
-                    exact="true"
-                    duration={200}
-                    containerId="containerElement"
-                    className="link"
-                    onClick={handleClick}
-                  >
-                    {nav.title}
-                  </Link>
-                </li>
-              ))}
-            </ul> */}
               <ul className="text-sm cursor-pointer">
                 {profileInfo?.navLinks?.map((nav) => (
                   <li className="py-2 nav-act aboutDiv" key={nav.id}>

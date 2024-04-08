@@ -45,12 +45,18 @@ const ContentDisplay = ({ mainData }) => {
                 {mainData.greet1Line2}
               </p>
             </div>
-            <div className="absolute bottom-14 px-10 animate-slideup opacity-0 [--slideup-delay:300ms]">
-              <p className="text-xl text-slate-500">{mainData.des1}</p>
+            <div className="absolute bottom-14 px-10 backdrop-blur-sm animate-slideup opacity-0 [--slideup-delay:300ms]">
+              <p className="text-xl text-slate-500 font-bold ">
+                {mainData.des1}
+              </p>
             </div>
           </div>
           {darkTheme ? (
-            ""
+            <img
+              src={mainData.homeDarkImg1}
+              className="h-full w-full object-cover"
+              alt="homePhoto1"
+            />
           ) : (
             <img
               src={mainData.homeImg1}
@@ -65,7 +71,7 @@ const ContentDisplay = ({ mainData }) => {
           }`}
         >
           <div className="absolute h-full w-full ">
-            <div className="pl-14 md:mt-[12%] mt-[20%] w-[30rem] backdrop-blur-sm  text-slate-500 animate-slideup opacity-0 [--slideup-delay:300ms]">
+            <div className="pl-14 md:mt-[12%] mt-[20%] w-[30rem]  text-slate-500 animate-slideup opacity-0 [--slideup-delay:300ms]">
               <p className="text-5xl  font-bold font-serif titleTag">
                 {mainData.greet2Line1}
               </p>
@@ -74,13 +80,17 @@ const ContentDisplay = ({ mainData }) => {
               </p>
             </div>
             <div className="absolute bottom-14 pl-10 backdrop-blur-sm w-[20rem] animate-slideup opacity-0 [--slideup-delay:300ms]">
-              <p className="text-xl text-slate-500 font-semibold">
+              <p className="text-xl text-slate-500 font-bold">
                 {mainData.des2}
               </p>
             </div>
           </div>
           {darkTheme ? (
-            ""
+            <img
+              src={mainData.homeDarkImg2}
+              className="h-full w-full object-cover"
+              alt="homePhoto2"
+            />
           ) : (
             <img
               src={mainData.homeImg2}
