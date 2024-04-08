@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import api from "../restApi/portfolio";
-import profileImg from "../images/profile-pic.png";
 import { Link } from "react-scroll";
 import ThemesContext from "../utils/ThemesContext";
 import { MdLightMode } from "react-icons/md";
@@ -43,7 +42,11 @@ const ProfileInfo = ({ setShow, show }) => {
           <div>
             <div className="flex justify-center">
               <div className="w-40 ">
-                <img src={profileImg} className="w-full" alt="profilePhoto" />
+                <img
+                  src="https://lh3.googleusercontent.com/d/1Sy81U6WFW0l9jzMx-gjyrTP8kmj6ktir=s220"
+                  className="w-full"
+                  alt="profilePhoto"
+                />
               </div>
             </div>
             <div className="py-5">
