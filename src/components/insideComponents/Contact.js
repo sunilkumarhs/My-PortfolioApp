@@ -3,6 +3,7 @@ import { BiMailSend } from "react-icons/bi";
 import { GrMapLocation } from "react-icons/gr";
 import { HiMiniDevicePhoneMobile } from "react-icons/hi2";
 import ThemesContext from "../../utils/ThemesContext";
+import contactImage from "../../images/contactImage.png";
 
 const Contact = ({ contactData }) => {
   const [hiddenElements, setHiddenElements] = useState(null);
@@ -25,7 +26,7 @@ const Contact = ({ contactData }) => {
   hiddenElements?.forEach((el) => observer.observe(el));
   return (
     <div
-      className={`md:px-10 px-5 pb-40 ${
+      className={`md:px-10 px-5 pb-0 ${
         darkTheme ? "bg-slate-800 text-white" : "bg-white"
       }`}
       id="contact"
@@ -102,6 +103,13 @@ const Contact = ({ contactData }) => {
                 {contactData?.num}
               </p>
             </div>
+          </div>
+          <div className="xl:w-1/2 w-full">
+            <img
+              src={contactImage}
+              alt="contactImage"
+              className="w-full h-full -mt-14 xl:-ml-10"
+            />
           </div>
         </div>
       </div>

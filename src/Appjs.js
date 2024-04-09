@@ -44,9 +44,17 @@ function Appjs() {
             <div className="md:hidden fixed z-20 " onClick={handleClick}>
               {" "}
               {show ? (
-                <VscCloseAll className="m-5 text-slate-600 text-5xl" />
+                <VscCloseAll
+                  className={`m-5 ${
+                    theme ? "text-white" : "text-slate-600"
+                  } text-5xl`}
+                />
               ) : (
-                <BsFillMenuButtonWideFill className="m-5 text-slate-600 text-4xl" />
+                <BsFillMenuButtonWideFill
+                  className={`m-5 ${
+                    theme ? "text-white" : "text-slate-600"
+                  } text-4xl`}
+                />
               )}
             </div>
             <div

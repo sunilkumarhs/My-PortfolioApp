@@ -31,11 +31,7 @@ const ContentDisplay = ({ mainData }) => {
         />
       </div>
       <div>
-        <div
-          className={`h-screen w-full relative ${show ? "" : "hidden"} ${
-            darkTheme ? "bg-slate-800" : "bg-white"
-          }`}
-        >
+        <div className={`h-screen w-full relative ${show ? "" : "hidden"}`}>
           <div className="absolute h-full w-full ">
             <div className="pl-14 md:mt-[12%] mt-[20%] w-[30rem] animate-slideup opacity-0 [--slideup-delay:300ms] ">
               <p className="text-5xl font-bold font-serif titleTag">
@@ -65,12 +61,8 @@ const ContentDisplay = ({ mainData }) => {
             />
           )}
         </div>
-        <div
-          className={`h-screen w-full relative ${show ? "hidden" : ""} ${
-            darkTheme ? "bg-slate-800" : "bg-white"
-          }`}
-        >
-          <div className="absolute h-full w-full ">
+        <div className={`h-screen w-full relative ${show ? "hidden" : ""}`}>
+          <div className="absolute h-full w-full homeBg1 homeBg2">
             <div className="pl-14 md:mt-[12%] mt-[20%] w-[30rem]  text-slate-500 animate-slideup opacity-0 [--slideup-delay:300ms]">
               <p className="text-5xl  font-bold font-serif titleTag">
                 {mainData.greet2Line1}

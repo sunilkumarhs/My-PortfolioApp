@@ -218,10 +218,3 @@
 section {
     min-height: 100vh;
 }
-
-.contacts {
-    background-image: linear-gradient(to right, rgb(220, 228, 228), rgb(149, 159, 159));
-}
-.contact {
-    background-image: linear-gradient(to right, rgb(46, 48, 48), rgb(69, 71, 71));
-}
