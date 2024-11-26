@@ -17,7 +17,7 @@ import ThemesContext from "./utils/ThemesContext";
 function Appjs() {
   const [mainData, setMainData] = useState(null);
   const [show, setShow] = useState(false);
-  const [theme, setTheme] = useState(false);
+  const [theme, setTheme] = useState(true);
 
   const getMainData = async () => {
     const response = await api.get("/home");

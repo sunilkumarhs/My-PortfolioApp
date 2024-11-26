@@ -21,7 +21,6 @@ const ProfileInfo = ({ setShow, show }) => {
   const handleClick = () => {
     setShow(!show);
   };
-
   return (
     <div
       className={`w-full border-x-2 border-gray-400 h-screen text-center px-3 pt-12 pb-36 overflow-y-scroll no-scrollbar relative ${

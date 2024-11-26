@@ -132,7 +132,7 @@ const About = ({ aboutData }) => {
                   : ""
               }`}
             >
-              <a href="https://linktr.ee/sunilkumarhs1718">
+              <a href="https://linktr.ee/sunilkumarhs010420">
                 <div className="flex justify-around">
                   <SiLinktree className="text-4xl text-green-500" />
                   <p className="font-bold pt-1">Linktree</p>
@@ -172,8 +172,8 @@ const About = ({ aboutData }) => {
                 {aboutData?.projectNum}
               </p>
               <div className="pt-8">
-                <a href="https://drive.google.com/file/d/14nl0JSMqrFwOAud_iBY3nOVtrLutI-WW/view?usp=sharing">
-                  <button className="border-[1px] border-gray-400 px-2 tracking-widest">
+                <a href="https://drive.google.com/file/d/1SULhLSHBoytcimxjsMSaglre98nsn4xe/view?usp=drive_link">
+                  <button className="border-[2px] border-slate-400 px-2 rounded-md tracking-widest bg-slate-400 hover:bg-slate-300">
                     RESUME
                   </button>
                 </a>
